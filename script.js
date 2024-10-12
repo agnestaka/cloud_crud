@@ -11,13 +11,13 @@ function onFormSubmit(e) {
   }
   resetForm();
 }
-//!get method(Retriving the data)
+//!get method(Retrieving the data)
 function readFormData() {
   var formData = {};
-  formData["productCode"] = document.getElementById("productCode").value;
-  formData["product"] = document.getElementById("product").value;
-  formData["qty"] = document.getElementById("qty").value;
-  formData["perPrice"] = document.getElementById("perPrice").value;
+  formData["fullName"] = document.getElementById("fullName").value;
+  formData["yearOfStudy"] = document.getElementById("yearOfStudy").value;
+  formData["dateOfBirth"] = document.getElementById("dateOfBirth").value;
+  formData["linkedIn"] = document.getElementById("linkedIn").value;
   return formData;
 }
 //!insert the data (Post method)
@@ -27,13 +27,13 @@ function insertNewRecord(data) {
     .getElementsByTagName("tbody")[0];
   var newRow = table.insertRow(table.length);
   cell1 = newRow.insertCell(0);
-  cell1.innerHTML = data.productCode;
+  cell1.innerHTML = data.fullName;
   cell2 = newRow.insertCell(1);
-  cell2.innerHTML = data.product;
+  cell2.innerHTML = data.yearOfStudy;
   cell3 = newRow.insertCell(2);
-  cell3.innerHTML = data.qty;
+  cell3.innerHTML = data.dateOfBirth;
   cell4 = newRow.insertCell(3);
-  cell4.innerHTML = data.perPrice;
+  cell4.innerHTML = data.linkedIn;
   cell4 = newRow.insertCell(4);
   cell4.innerHTML = `<button onClick="onEdit(this)">Edit</button> <button onClick = "onDelete(this)">Delete</button>`;
 }
@@ -41,22 +41,22 @@ function insertNewRecord(data) {
 //editing the data(get)
 function onEdit(td) {
   selectedRow = td.parentElement.parentElement;
-  document.getElementById("productCode").value = selectedRow.cells[0].innerHTML;
-  document.getElementById("product").value = selectedRow.cells[1].innerHTML;
-  document.getElementById("qty").value = selectedRow.cells[2].innerHTML;
-  document.getElementById("perPrice").value = selectedRow.cells[3].innerHTML;
+  document.getElementById("fullName").value = selectedRow.cells[0].innerHTML;
+  document.getElementById("yearOfStudy").value = selectedRow.cells[1].innerHTML;
+  document.getElementById("dateOfBirth").value = selectedRow.cells[2].innerHTML;
+  document.getElementById("linkedIn").value = selectedRow.cells[3].innerHTML;
 }
 //updating the data
 function updateRecord(formData) {
-  selectedRow.cells[0].innerHTML = formData.productCode;
-  selectedRow.cells[1].innerHTML = formData.product;
-  selectedRow.cells[2].innerHTML = formData.qty;
-  selectedRow.cells[3].innerHTML = formData.perPrice;
+  selectedRow.cells[0].innerHTML = formData.fullName;
+  selectedRow.cells[1].innerHTML = formData.yearOfStudy;
+  selectedRow.cells[2].innerHTML = formData.dateOfBirth;
+  selectedRow.cells[3].innerHTML = formData.linkedIn;
 }
 //!deleting the data (delete method)
 //delete the data
 function onDelete(td) {
-  if (confirm("Are you sure about deleting😒 the data ?")) {
+  if (confirm("Are you sure about deleting the data ?")) {
     row = td.parentElement.parentElement;
     document.getElementById("storeList").deleteRow(row.rowIndex);
     resetForm();
@@ -64,9 +64,9 @@ function onDelete(td) {
 }
 //!reseting the values in form
 function resetForm() {
-  document.getElementById("productCode").value = "";
-  document.getElementById("product").value = "";
-  document.getElementById("qty").value = "";
-  document.getElementById("perPrice").value = "";
+  document.getElementById("fullName").value = "";
+  document.getElementById("yearOfStudy").value = "";
+  document.getElementById("dateOfBirth").value = "";
+  document.getElementById("linkedIn").value = "";
   selectedRow = null;
 }
